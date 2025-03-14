@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import "../styles/history.css";
 
 const History = () => {
-  const [reports, setReports] = useState([]);
-
-  useEffect(() => {
-    const fetchReports = async () => {
-      const token = localStorage.getItem("token");
-      const response = await axios.get("http://127.0.0.1:8000/api/history/", {
-        headers: { Authorization: `Token ${token}` },
-      });
-      setReports(response.data);
-    };
-    fetchReports();
-  }, []);
+  const [history, setHistory] = useState([
+    { id: 1, video: "sample1.mp4", result: "Deepfake detected" },
+    { id: 2, video: "sample2.mp4", result: "No deepfake detected" },
+  ]);
 
   return (
-    <div>
-      <h2>History & Reports</h2>
+    <div className="history-container">
+      <h2>Detection History</h2>
       <ul>
-        {reports.map((report) => (
-          <li key={report.id}>
-            <p>Video: {report.video}</p>
-            <a href={report.report_file} download>Download Report</a>
+        {history.map((entry) => (
+          <li key={entry.id}>
+            <strong>{entry.video}:</strong> {entry.result}
           </li>
         ))}
       </ul>
