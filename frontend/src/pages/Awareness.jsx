@@ -1,26 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import "../styles/awareness.css";
 
 const Awareness = () => {
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const response = await axios.get("http://127.0.0.1:8000/api/awareness/");
-      setArticles(response.data);
-    };
-    fetchArticles();
-  }, []);
-
   return (
-    <div>
-      <h2>Deepfake Awareness</h2>
-      {articles.map((article) => (
-        <div key={article.id}>
-          <h3>{article.title}</h3>
-          <p>{article.content}</p>
-        </div>
-      ))}
+    <div className="awareness-container">
+      <h2>Understanding Deepfake Technology</h2>
+      <p>Deepfake videos use AI to manipulate faces in videos, creating realistic but fake content. Always verify sources!</p>
     </div>
   );
 };
