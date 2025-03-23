@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import "../styles/upload.css";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/pages.css";
 
 const Upload = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [result, setResult] = useState("");
+  const navigate = useNavigate();
 
-  const handleUpload = () => {
-    if (selectedFile) {
-      // Simulated deepfake detection logic
-      setTimeout(() => {
-        setResult("Deepfake detected!");
-      }, 2000);
-    }
+  const handleGenerateReport = () => {
+    navigate("/report"); // Navigates correctly to the Report page
   };
 
   return (
-    <div className="upload-container">
-      <h2>Upload a Video</h2>
-      <input type="file" accept="video/*" onChange={(e) => setSelectedFile(e.target.files[0])} />
-      <button onClick={handleUpload} disabled={!selectedFile}>Analyze</button>
-      {result && <p className="result">{result}</p>}
+    <div className="container">
+      <h2>Upload Deepfake Video</h2>
+      <input type="file" accept="video/*" />
+      <button>Upload</button>
+
+      {/* Generate Report Button */}
+      <button onClick={handleGenerateReport} className="generate-report">
+        Generate Report
+      </button>
     </div>
   );
 };
