@@ -1,38 +1,24 @@
-.App {
-  text-align: center;
-}
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Upload from "./pages/Upload";
+import Report from "./pages/Report";
+import Awareness from "./pages/Awareness";
+import Header from "./components/Header";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/report" element={<Report />} />  {/* ✅ Make sure this exists */}
+        <Route path="/awareness" element={<Awareness />} />
+      </Routes>
+    </Router>
+  );
+};
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default App;

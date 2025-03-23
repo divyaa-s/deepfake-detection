@@ -1,11 +1,11 @@
 import React from "react";
-import "../styles/dashboard.css";
+import "../styles/pages.css";
 
 const Dashboard = () => {
   return (
-    <div className="dashboard-container">
-      <h2>Welcome to Deepfake Detection</h2>
-      <p>Upload a video to detect deepfake manipulations.</p>
+    <div className="container">
+      <h2>Welcome to Your Dashboard</h2>
+      <p>Manage your deepfake detection activities here.</p>
     </div>
   );
 };

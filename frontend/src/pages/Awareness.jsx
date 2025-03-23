@@ -1,11 +1,17 @@
 import React from "react";
-import "../styles/awareness.css";
+import "../styles/pages.css";
 
 const Awareness = () => {
   return (
-    <div className="awareness-container">
-      <h2>Understanding Deepfake Technology</h2>
-      <p>Deepfake videos use AI to manipulate faces in videos, creating realistic but fake content. Always verify sources!</p>
+    <div className="container">
+      <h2>Deepfake Awareness</h2>
+      <p>
+        Deepfake technology uses AI to manipulate media, creating realistic but 
+        deceptive videos and images. While it has creative applications, it also 
+        poses risks such as misinformation, fraud, and identity theft. Educating 
+        people about deepfakes helps in identifying manipulated content and preventing 
+        misuse. Always verify media sources before believing or sharing content online.
+      </p>
     </div>
   );
 };
