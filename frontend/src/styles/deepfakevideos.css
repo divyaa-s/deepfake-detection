@@ -1,0 +1,21 @@
+.deepfake-videos-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .video-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .video-item {
+    margin: 15px;
+    text-align: center;
+  }
+  
+  video {
+    width: 320px;
+    height: 180px;
+  }
+  

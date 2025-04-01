@@ -1,30 +1,26 @@
-import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Upload from "./pages/Upload";
-import Awareness from "./pages/Awareness";
-import Dashboard from "./pages/Dashboard";
-import History from "./pages/History";
-import Report from "./pages/Report";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Dashboard from "./pages/Dashboard";
+import Upload from "./pages/Upload";
+import History from "./pages/History";
+import DeepfakeVideos from "./pages/deepfakevideos";
+import Report from "./pages/Report";
+import Profile from "./pages/profile";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
-    <>
-      {isAuthenticated && <Header setIsAuthenticated={setIsAuthenticated} />}
+    <Router>
+      <Header />
       <Routes>
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path="/upload" element={isAuthenticated ? <Upload /> : <Navigate to="/" />} />
-        <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />} />
-        <Route path="/awareness" element={isAuthenticated ? <Awareness /> : <Navigate to="/" />} />
-        <Route path="/history" element={isAuthenticated ? <History /> : <Navigate to="/" />} />
-        <Route path="/report" element={isAuthenticated ? <Report /> : <Navigate to="/" />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/deepfake-videos" element={<DeepfakeVideos />} />
+        <Route path="/report" element={<Report />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
-    </>
+    </Router>
   );
 };
 

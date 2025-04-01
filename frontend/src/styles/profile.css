@@ -1,0 +1,14 @@
+.profile-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .profile-details {
+    margin: 20px 0;
+  }
+  
+  .profile-actions button {
+    margin: 10px;
+    padding: 10px;
+  }
+  

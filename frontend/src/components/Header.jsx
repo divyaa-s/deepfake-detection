@@ -1,28 +1,20 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/Header.css";
+import { Link } from "react-router-dom";
+import "../styles/header.css";
 
-const Header = ({ setIsAuthenticated }) => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-      setIsAuthenticated(false); 
-      navigate("/");
-    }
-  };
-
+const Header = () => {
   return (
-    <header className="header">
-      <nav>
-        <Link to="/upload">Upload</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/awareness">Awareness</Link>
-        <Link to="/history">History</Link>
-        <button className="logout-btn" onClick={handleLogout}>Logout</button>
-      </nav>
-    </header>
+    <nav className="header">
+      <h1>Deepfake Detection</h1>
+      <ul className="nav-links">
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/upload">Upload Video</Link></li>
+        <li><Link to="/history">History</Link></li>
+        <li><Link to="/deepfake-videos">Deepfake Videos</Link></li>
+        <li><Link to="/report">Report</Link></li>
+        <li><Link to="/profile">Profile</Link></li>
+      </ul>
+    </nav>
   );
 };
 
