@@ -13,6 +13,7 @@ const Header = () => {
         <li><Link to="/deepfake-videos">Deepfake Videos</Link></li>
         <li><Link to="/report">Report</Link></li>
         <li><Link to="/profile">Profile</Link></li>
+        <li><Link to="/awareness">Awareness</Link></li>
       </ul>
     </nav>
   );

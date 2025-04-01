@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/deepfakeVideos.css";
+import "../styles/deepfakevideos.css";
 
 const DeepfakeVideos = () => {
   const sampleVideos = [
