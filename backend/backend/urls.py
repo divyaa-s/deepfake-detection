@@ -23,3 +23,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('deepfake_app.urls')),  # API Endpoints
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
