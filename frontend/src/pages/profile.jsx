@@ -1,18 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/profile.css";
 
 const Profile = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+
+  const handleEditProfile = () => {
+    setIsEditing(true); // Set to true when editing starts
+  };
+
+  const handleChangePassword = () => {
+    setIsChangingPassword(true); // Show password change form
+  };
+
+  const handleSavePassword = () => {
+    console.log("Password changed");
+    // You can add your password change logic here (e.g., API call to change the password)
+    setIsChangingPassword(false); // Hide password change form after saving
+  };
+
   return (
     <div className="profile-container">
       <h2>User Profile</h2>
-      <div className="profile-details">
-        <p><strong>Name:</strong> John Doe</p>
-        <p><strong>Email:</strong> johndoe@example.com</p>
-      </div>
+      
+      {/* Conditionally render either profile details or edit form */}
+      {isEditing ? (
+        <div className="edit-form">
+          <label>Edit Name:</label>
+          <input type="text" defaultValue="Example Name" />
+          <label>Edit Email:</label>
+          <input type="email" defaultValue="example@example.com" />
+          <button onClick={() => setIsEditing(false)}>Save</button>
+        </div>
+      ) : isChangingPassword ? (
+        <div className="change-password-form">
+          <label>New Password:</label>
+          <input type="password" placeholder="Enter new password" />
+          <label>Confirm New Password:</label>
+          <input type="password" placeholder="Confirm new password" />
+          <button onClick={handleSavePassword}>Save Password</button>
+          <button onClick={() => setIsChangingPassword(false)}>Cancel</button>
+        </div>
+      ) : (
+        <div className="profile-details">
+          <p><strong>Name:</strong> Example Name</p>
+          <p><strong>Email:</strong> example@example.com</p>
+        </div>
+      )}
+
       <div className="profile-actions">
-        <button>Edit Profile</button>
-        <button>Change Password</button>
-        <button>Sign Out</button>
+        <button onClick={handleEditProfile}>Edit Profile</button>
+        <button onClick={handleChangePassword}>Change Password</button>
       </div>
     </div>
   );

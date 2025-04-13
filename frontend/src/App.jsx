@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
@@ -9,14 +9,18 @@ import Report from "./pages/Report";
 import Profile from "./pages/profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Awareness from "./pages/Awareness"
+import Awareness from "./pages/Awareness";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <>
-      <Header />
+      {/* Conditionally render the header based on authentication */}
+      {isAuthenticated && <Header />}
+      
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/history" element={<History />} />

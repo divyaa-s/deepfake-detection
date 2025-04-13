@@ -1,21 +1,44 @@
 .deepfake-videos-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .video-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .video-item {
-    margin: 15px;
-    text-align: center;
-  }
-  
-  video {
-    width: 320px;
-    height: 180px;
-  }
-  
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.video-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Adds space between video items */
+}
+
+.video-item {
+  margin: 15px;
+  text-align: center;
+  max-width: 800px; /* Increased max-width for larger videos */
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio for 16:9 videos */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 8px; /* Optional: rounded corners for a modern look */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px; /* Optional: rounded corners for the iframe */
+}
+
+/* Optional: Title styling */
+.video-item h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
