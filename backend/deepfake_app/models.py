@@ -26,3 +26,16 @@ class Report(models.Model):
     video = models.ForeignKey(VideoUpload, on_delete=models.CASCADE)
     report_file = models.FileField(upload_to="reports/")
     created_at = models.DateTimeField(auto_now_add=True)
+
+from django.db import models
+from django.db import models
+
+class DeepfakeImage(models.Model):
+    image = models.ImageField(upload_to='uploads/')
+    prediction = models.CharField(max_length=10)
+    confidence = models.FloatField()
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    grad_cam_path = models.CharField(max_length=500, blank=True, null=True)  # Add grad_cam_path to store the path
+    def __str__(self):
+        return self.image.name
+
