@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "../styles/pages.css";
 
-const Upload = () => {
-  const navigate = useNavigate();
-
-  const handleGenerateReport = () => {
-    navigate("/report"); // Navigates correctly to the Report page
-=======
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../styles/upload.css";
 
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -62,21 +53,12 @@ const Upload = () => {
     } finally {
       setIsUploading(false);
     }
->>>>>>> c7dfa4cfcdede1fcd2066c566de0bca809c29666
+
   };
 
   return (
     <div className="container">
-<<<<<<< HEAD
-      <h2>Upload Deepfake Video</h2>
-      <input type="file" accept="video/*" />
-      <button>Upload</button>
 
-      {/* Generate Report Button */}
-      <button onClick={handleGenerateReport} className="generate-report">
-        Generate Report
-      </button>
-=======
       <h2>Upload Deepfake Video or Image</h2>
 
       <input type="file" accept="video/*,image/*" onChange={handleFileChange} />
@@ -86,7 +68,7 @@ const Upload = () => {
       </button>
 
       {uploadStatus && <p className="upload-status">{uploadStatus}</p>}
->>>>>>> c7dfa4cfcdede1fcd2066c566de0bca809c29666
+
     </div>
   );
 };

@@ -1,78 +1,64 @@
+/* Report Page Container */
 .report-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  
-  .report-details {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  .report-details p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-  
-  .status-fake {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .report-observations {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-  
-  .report-observations h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .report-observations ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  
-  .report-observations li {
-    margin-bottom: 5px;
-  }
-  
-  .download-report, .back-to-dashboard {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-  }
-  
-  .download-report:hover, .back-to-dashboard:hover {
-    background-color: #0056b3;
-  }
-  
-  .back-to-dashboard {
-    background-color: #28a745;
-  }
-  
-  .back-to-dashboard:hover {
-    background-color: #1e7e34;
-  }
-  
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #001031; /* Dark background to match theme */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff; /* White text */
+}
+
+/* Heading */
+.report-container h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #90afff; /* Accent color for heading */
+}
+
+/* Report Details Section */
+.report-details {
+  background: #112240; /* Dark background for details */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.report-details p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Status Class for Fake Detection */
+.status-fake {
+  color: red;
+  font-weight: bold;
+}
+
+/* Button Styling */
+.download-report, .back-to-dashboard {
+  background-color: #90afff; /* Accent color */
+  color: #000000; /* Dark text for contrast */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+}
+
+.download-report:hover, .back-to-dashboard:hover {
+  background-color: #0077cc; /* Darker shade for hover effect */
+}
+
+.back-to-dashboard {
+  background-color: #90afff; /* Green for the back button */
+}
+
+.back-to-dashboard:hover {
+  background-color: #90afff; /* Darker green for hover */
+}

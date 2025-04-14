@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/report.css";
 
-const Report = () => {
+const Report = ({ videoDetails = { videoName: 'Default Video', status: 'Status Unknown', confidence: 0 } }) => {
   const handleDownloadTxt = () => {
     const reportText = `Deepfake Detection Report
 --------------------------------
-Video Name: sample_video.mp4
+Video Name: ${videoDetails.videoName}
 Analysis Date: ${new Date().toLocaleDateString()}
-Status: Fake Detected
-Confidence: 92%
+Status: ${videoDetails.status}
+Confidence: ${videoDetails.confidence}%
 --------------------------------
 Key Observations:
 - Inconsistent facial expressions
@@ -25,22 +25,13 @@ Key Observations:
   };
 
   return (
-    <div className="container">
+    <div className="report-container">
       <h2>Deepfake Detection Report</h2>
       <div className="report-details">
-        <p><strong>Video Name:</strong> sample_video.mp4</p>
+        <p><strong>Video Name:</strong> {videoDetails.videoName}</p>
         <p><strong>Analysis Date:</strong> {new Date().toLocaleDateString()}</p>
-        <p><strong>Status:</strong> <span className="status-fake">Fake Detected</span></p>
-        <p><strong>Confidence:</strong> 92%</p>
-      </div>
-
-      <div className="report-observations">
-        <h3>Key Observations</h3>
-        <ul>
-          <li>Inconsistent facial expressions</li>
-          <li>Unnatural eye blinking</li>
-          <li>Blurred edge artifacts</li>
-        </ul>
+        <p><strong>Status:</strong> <span className={videoDetails.status === 'Fake Detected' ? 'status-fake' : 'status-true'}>{videoDetails.status}</span></p>
+        <p><strong>Confidence:</strong> {videoDetails.confidence}%</p>
       </div>
 
       <button onClick={handleDownloadTxt} className="download-report">
