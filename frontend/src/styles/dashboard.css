@@ -4,6 +4,10 @@
   color: #1237b0; /* Light text color for consistency */
 }
 
+.h2{
+  color: rgb(255, 255, 255);
+}
+
 .dashboard-card {
   background: #0a192f; /* Dark background similar to header */
   padding: 20px;

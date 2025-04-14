@@ -10,6 +10,7 @@ import Profile from "./pages/profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Awareness from "./pages/Awareness";
+import Results from "./pages/Results";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/upload" element={<Upload />} />
         <Route path="/history" element={<History />} />
         <Route path="/deepfake-videos" element={<DeepfakeVideos />} />
+        <Route path="/results" element={<Results />} />
         <Route path="/report" element={<Report />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />

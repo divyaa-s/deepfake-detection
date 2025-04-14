@@ -30,12 +30,17 @@ class Report(models.Model):
 from django.db import models
 from django.db import models
 
-class DeepfakeImage(models.Model):
-    image = models.ImageField(upload_to='uploads/')
-    prediction = models.CharField(max_length=10)
-    confidence = models.FloatField()
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-    grad_cam_path = models.CharField(max_length=500, blank=True, null=True)  # Add grad_cam_path to store the path
-    def __str__(self):
-        return self.image.name
+from django.db import models
 
+class DeepfakeImage(models.Model):
+    image = models.ImageField(upload_to='uploads/')  # Store the uploaded image
+    prediction = models.CharField(max_length=10)  # Prediction result (e.g., 'Real' or 'Fake')
+    confidence = models.FloatField()  # Confidence score for prediction
+    uploaded_at = models.DateTimeField(auto_now_add=True)  # Timestamp when the image is uploaded
+    grad_cam_path = models.CharField(max_length=500, blank=True, null=True)  # Path to Grad-CAM image
+    lbp_features = models.JSONField(blank=True, null=True)  # Store Local Binary Patterns (LBP) features as JSON
+    eye_reflection_features = models.JSONField(blank=True, null=True)  # Store Eye Reflection features as JSON
+    skin_texture_features = models.JSONField(blank=True, null=True)  # Store Skin Texture features as JSON
+
+    def __str__(self):
+        return f"Deepfake Image {self.id} - {self.prediction} ({self.confidence}%)"

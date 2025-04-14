@@ -1,43 +1,4 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from django.core.files.storage import default_storage
-from .models import VideoUpload, DetectionResult
-from .serializers import VideoUploadSerializer, DetectionResultSerializer
-import os
-
-@api_view(['POST'])
-def upload_video(request):
-    """ API to upload a video for deepfake detection """
-    video_file = request.FILES.get('video')
-    if not video_file:
-        return Response({"error": "No video uploaded"}, status=400)
-
-    video_instance = VideoUpload(video=video_file)
-    video_instance.save()
-    
-    return Response({"message": "Video uploaded successfully", "video_id": video_instance.id})
-
-@api_view(['GET'])
-def get_results(request, video_id):
-    """ API to retrieve deepfake detection results for a video """
-    try:
-        results = DetectionResult.objects.filter(video_id=video_id)
-        serializer = DetectionResultSerializer(results, many=True)
-        return Response(serializer.data)
-    except DetectionResult.DoesNotExist:
-        return Response({"error": "No results found"}, status=404)
-
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
-from .models import VideoUpload, DetectionResult, AwarenessContent, Report
-from .serializers import VideoUploadSerializer, DetectionResultSerializer, AwarenessContentSerializer, ReportSerializer
-=======
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes, parser_classes
 from django.core.files.storage import default_storage
@@ -53,6 +14,7 @@ import os
 from .models import VideoUpload, DetectionResult, DeepfakeImage, AwarenessContent, Report
 from .serializers import VideoUploadSerializer, DetectionResultSerializer, AwarenessContentSerializer, ReportSerializer
 from .deepfake_detection import generate_gradcam_and_ensemble_predict  # Import your detection function
+from .deepfake_detection import *
 
 # Helper function to handle uploaded files
 def handle_uploaded_file(file):
@@ -86,7 +48,8 @@ def upload_media(request):
         image_path = handle_uploaded_file(uploaded_file)
 
         # Call the deepfake detection function
-        prediction, confidence, grad_cam_path = generate_gradcam_and_ensemble_predict(request,image_path)
+        prediction, confidence, grad_cam_path, lbp_features, eye_reflection_features, skin_texture_features = generate_gradcam_and_ensemble_predict(request, image_path)
+
 
         # Save result in the database
         deepfake_image = DeepfakeImage(image=uploaded_file, prediction=prediction, confidence=confidence)
@@ -136,7 +99,8 @@ def analyze_uploaded_file(request):
 
     # Perform analysis (assuming you've saved the image previously)
     image_path = os.path.join(settings.MEDIA_ROOT, deepfake_image.image.name)
-    prediction, confidence, grad_cam_path = generate_gradcam_and_ensemble_predict(request, image_path)
+    prediction, confidence, grad_cam_path, lbp_features, eye_reflection_features, skin_texture_features = generate_gradcam_and_ensemble_predict(request, image_path)
+
 
     # Update the result in the database
     deepfake_image.prediction = prediction
@@ -149,7 +113,7 @@ def analyze_uploaded_file(request):
         'grad_cam_path': grad_cam_path,  # Include the Grad-CAM image path in the response
         "message": "Analysis completed successfully."
     })
->>>>>>> c7dfa4cfcdede1fcd2066c566de0bca809c29666
+
 
 # ✅ 1. Login / Signup Page
 @api_view(['POST'])
@@ -176,8 +140,6 @@ def login(request):
         return Response({"token": token.key, "message": "Login successful"})
     return Response({"error": "Invalid credentials"}, status=400)
 
-<<<<<<< HEAD
-
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -185,8 +147,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import VideoUpload, DetectionResult, AwarenessContent, Report
 from .serializers import VideoUploadSerializer, DetectionResultSerializer, AwarenessContentSerializer, ReportSerializer
 
-=======
->>>>>>> c7dfa4cfcdede1fcd2066c566de0bca809c29666
+
 # ✅ 1. User Dashboard - Fetch uploaded videos
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -214,7 +175,3 @@ def user_reports(request):
     reports = Report.objects.filter(user=user)
     serializer = ReportSerializer(reports, many=True)
     return Response(serializer.data)
-<<<<<<< HEAD
-=======
-
->>>>>>> c7dfa4cfcdede1fcd2066c566de0bca809c29666

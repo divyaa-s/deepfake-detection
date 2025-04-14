@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -53,8 +52,7 @@ const Upload = () => {
     } finally {
       setIsUploading(false);
     }
-
-  };
+ };
 
   return (
     <div className="container">
